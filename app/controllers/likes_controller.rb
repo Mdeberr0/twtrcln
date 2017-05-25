@@ -4,10 +4,15 @@ class LikesController < ApplicationController
   def create
   	@tweet = Tweet.find(params[:tweet_id])
   	@tweet.likes.where(user_id: current_user.id).first_or_create
-  	
   	respond_to do |format|
-  		format.html { rederect_to request.referrer}
+  		format.html { redirect_to request.referrer}
   	end
   end
-  
+  def destroy
+  	@tweet = Tweet.find(params[:tweet_id])
+  	@tweet.likes.where(user_id: current_user.id).destroy_all
+  	respond_to do |format|
+  		format.html {redirect_to request.referrer}
+		end
+	end
 end

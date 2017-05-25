@@ -4,7 +4,7 @@
 		<h5><%= @user.username %></h5>
 		<h5><p><%= @user.bio %></p></h5>
 		<h5><%= @user.location %></h5>
-		<h5> Joined on <%= @user.created_at.strftime("%B %Y") %></h5>	
+		<h5> Joined on <%= @user.created_at.strftime('%B %Y') %></h5>	
 		<%= @user.relationships.count %> Following
 		<br />
 		<% @user.relationships.each do |relationship| %>

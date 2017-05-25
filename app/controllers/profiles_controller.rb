@@ -8,4 +8,10 @@ class ProfilesController < ApplicationController
 		@users = User.all
 	end
 	
+	def feed
+		@tweet = Tweet.new
+		#@tweets = Tweet.all
+		@tweets = Tweet.where("user_id in (?) OR user_id = ?", current_user.friend_ids, current_user).order('created_at DESC')
+	end
+	
 end
